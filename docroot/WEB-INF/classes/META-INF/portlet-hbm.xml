@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.j2eecn.mcat.model.MeAssetCat" />
+	<import class="com.j2eecn.mcat.model.MeCategory" />
+	<class name="com.j2eecn.mcat.model.impl.MeAssetCatImpl" table="MeAssetCat">
+		<cache usage="read-write" />
+		<id name="assetCatId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="statusByUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusByUserName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="statusDate" type="org.hibernate.type.TimestampType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="desc" type="com.liferay.portal.dao.orm.hibernate.StringType" column="desc_" />
+		<property name="useStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="code" type="com.liferay.portal.dao.orm.hibernate.StringType" column="code_" />
+		<property name="mngId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="mngName" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="codeAndName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.j2eecn.mcat.model.impl.MeCategoryImpl" table="MeCategory">
+		<cache usage="read-write" />
+		<id name="catId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="statusByUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusByUserName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="statusDate" type="org.hibernate.type.TimestampType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="desc" type="com.liferay.portal.dao.orm.hibernate.StringType" column="desc_" />
+		<property name="remark" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="useStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="code" type="com.liferay.portal.dao.orm.hibernate.StringType" column="code_" />
+		<property name="mngId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="mngName" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="codeAndName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="fullName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="assetCatId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+</hibernate-mapping>

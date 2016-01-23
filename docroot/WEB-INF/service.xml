@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.j2eecn.mcat" auto-namespace-tables="false">
+	<author>Administrator</author>
+	<namespace>Me</namespace>
+	<entity name="MeAssetCat" uuid="true" local-service="true" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="assetCatId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		
+		<!-- Workflow fields -->
+		<column name="status" type="int" />
+		<column name="statusByUserId" type="long" />
+		<column name="statusByUserName" type="String" />
+		<column name="statusDate" type="Date" />
+
+		<!-- Common fields -->
+	
+		<column name="name" type="String" />
+		<column name="desc" type="String" />
+	    <column name="useStatus" type="int" /><!--0 草稿、1 在用、2  挂起、3、废弃-->
+		
+		
+		<!-- Other fields -->
+		<column name="code" type="String" />
+		<column name="mngId" type="long" />
+		<column name="mngName" type="long" />
+		<column name="codeAndName" type="String" />
+	</entity>
+
+	<entity name="MeCategory" uuid="true" local-service="true" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="catId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		
+		<!-- Workflow fields -->
+		<column name="status" type="int" />
+		<column name="statusByUserId" type="long" />
+		<column name="statusByUserName" type="String" />
+		<column name="statusDate" type="Date" />
+
+		<!-- Common fields -->
+		<column name="name" type="String" />
+		<column name="desc" type="String" />
+		<column name="remark" type="String" />
+	    <column name="useStatus" type="int" /><!--0 草稿、1 在用、2  挂起、3、废弃-->
+		
+		
+		<!-- Other fields -->
+		<column name="code" type="String" />
+        <column name="mngId" type="long" />
+        <column name="mngName" type="long" />
+		<column name="codeAndName" type="String" />
+		<column name="fullName" type="String" />
+		<!-- rf ids -->
+		<column name="assetCatId" type="long" />
+		
+	</entity>
+</service-builder>

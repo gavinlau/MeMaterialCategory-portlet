@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="com.j2eecn.mcat.service.persistence.MeAssetCatFinder.findByN_C_NC">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				MeAssetCat as ent
+			WHERE
+				(
+					(lower(ent.name) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(lower(ent.code) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(lower(ent.codeAndName) LIKE ? [$AND_OR_NULL_CHECK$])
+				) AND (ent.useStatus = 1)
+		]]>
+	</sql>
+	<sql id="com.j2eecn.mcat.service.persistence.MeAssetCatFinder.countByN_C_NC">
+		<![CDATA[
+			SELECT
+				count(*) as cnt
+			FROM
+				MeAssetCat as ent
+			WHERE
+				(
+					(lower(ent.name) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(lower(ent.code) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(lower(ent.codeAndName) LIKE ? [$AND_OR_NULL_CHECK$])
+				) AND (ent.useStatus = 1)
+		]]>
+	</sql>
+</custom-sql>

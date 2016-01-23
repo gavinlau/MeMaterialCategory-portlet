@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.j2eecn.mcat.model.MeAssetCat">
+		<field name="uuid" type="String" />
+		<field name="assetCatId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="desc" type="String" />
+		<field name="useStatus" type="int" />
+		<field name="code" type="String" />
+		<field name="mngId" type="long" />
+		<field name="mngName" type="long" />
+		<field name="codeAndName" type="String" />
+	</model>
+	<model name="com.j2eecn.mcat.model.MeCategory">
+		<field name="uuid" type="String" />
+		<field name="catId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="desc" type="String" />
+		<field name="remark" type="String" />
+		<field name="useStatus" type="int" />
+		<field name="code" type="String" />
+		<field name="mngId" type="long" />
+		<field name="mngName" type="long" />
+		<field name="codeAndName" type="String" />
+		<field name="fullName" type="String" />
+		<field name="assetCatId" type="long" />
+	</model>
+</model-hints>

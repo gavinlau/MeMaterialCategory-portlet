@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.j2eecn.mcat.service.MeAssetCatLocalService" class="com.j2eecn.mcat.service.impl.MeAssetCatLocalServiceImpl" />
+	<bean id="com.j2eecn.mcat.service.MeAssetCatService" class="com.j2eecn.mcat.service.impl.MeAssetCatServiceImpl" />
+	<bean id="com.j2eecn.mcat.service.persistence.MeAssetCatPersistence" class="com.j2eecn.mcat.service.persistence.MeAssetCatPersistenceImpl" parent="basePersistence" />
+	<bean id="com.j2eecn.mcat.service.persistence.MeAssetCatFinder" class="com.j2eecn.mcat.service.persistence.MeAssetCatFinderImpl" parent="basePersistence" />
+	<bean id="com.j2eecn.mcat.service.MeCategoryLocalService" class="com.j2eecn.mcat.service.impl.MeCategoryLocalServiceImpl" />
+	<bean id="com.j2eecn.mcat.service.MeCategoryService" class="com.j2eecn.mcat.service.impl.MeCategoryServiceImpl" />
+	<bean id="com.j2eecn.mcat.service.persistence.MeCategoryPersistence" class="com.j2eecn.mcat.service.persistence.MeCategoryPersistenceImpl" parent="basePersistence" />
+</beans>
