@@ -88,7 +88,7 @@ public class MeAssetCatModelImpl extends BaseModelImpl<MeAssetCat>
 			{ "mngName", Types.BIGINT },
 			{ "codeAndName", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table MeAssetCat (uuid_ VARCHAR(75) null,assetCatId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null,name VARCHAR(75) null,desc_ VARCHAR(75) null,useStatus INTEGER,code_ VARCHAR(75) null,mngId LONG,mngName LONG,codeAndName VARCHAR(75) null)";
+	public static final String TABLE_SQL_CREATE = "create table MeAssetCat (uuid_ VARCHAR(75) null,assetCatId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null,name VARCHAR(400) null,desc_ VARCHAR(400) null,useStatus INTEGER,code_ VARCHAR(400) null,mngId LONG,mngName LONG,codeAndName VARCHAR(400) null)";
 	public static final String TABLE_SQL_DROP = "drop table MeAssetCat";
 	public static final String ORDER_BY_JPQL = " ORDER BY meAssetCat.assetCatId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY MeAssetCat.assetCatId ASC";

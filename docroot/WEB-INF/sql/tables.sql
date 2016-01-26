@@ -11,13 +11,13 @@ create table MeAssetCat (
 	statusByUserId LONG,
 	statusByUserName VARCHAR(75) null,
 	statusDate DATE null,
-	name VARCHAR(75) null,
-	desc_ VARCHAR(75) null,
+	name VARCHAR(400) null,
+	desc_ VARCHAR(400) null,
 	useStatus INTEGER,
-	code_ VARCHAR(75) null,
+	code_ VARCHAR(400) null,
 	mngId LONG,
 	mngName LONG,
-	codeAndName VARCHAR(75) null
+	codeAndName VARCHAR(400) null
 );
 
 create table MeCategory (

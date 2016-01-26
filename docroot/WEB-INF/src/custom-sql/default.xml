@@ -9,7 +9,7 @@
 			WHERE
 				(
 					(lower(ent.name) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
-					(lower(ent.code) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(lower(ent.code_) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
 					(lower(ent.codeAndName) LIKE ? [$AND_OR_NULL_CHECK$])
 				) AND (ent.useStatus = 1)
 		]]>
@@ -23,7 +23,7 @@
 			WHERE
 				(
 					(lower(ent.name) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
-					(lower(ent.code) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+					(lower(ent.code_) LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
 					(lower(ent.codeAndName) LIKE ? [$AND_OR_NULL_CHECK$])
 				) AND (ent.useStatus = 1)
 		]]>

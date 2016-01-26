@@ -40,6 +40,26 @@
 		<column name="mngName" type="long" />
 		<column name="codeAndName" type="String" />
 	</entity>
+	<entity name="MeAssetCatCare">
+	   <!-- PK fields -->
+
+		<column name="assetCatCareId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		
+		<!-- Other fields -->
+		<column name="assetCatId" type="long"/>
+	</entity>
 
 	<entity name="MeCategory" uuid="true" local-service="true" remote-service="true">
 

@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 <%@page import="com.j2eecn.mcat.search.*"%>
 <portlet:defineObjects />
-<%@include file="/html/init.jsp"%>
+<%@include file="init.jsp"%>
 <%
 MeAssetCatSearch  searchContainer = (MeAssetCatSearch)request.getAttribute("liferay-ui:search:searchContainer");
 MeAssetCatDisplayTerms displayTerms = (MeAssetCatDisplayTerms)searchContainer.getDisplayTerms();

@@ -14,13 +14,21 @@
 		<field name="statusByUserId" type="long" />
 		<field name="statusByUserName" type="String" />
 		<field name="statusDate" type="Date" />
-		<field name="name" type="String" />
-		<field name="desc" type="String" />
+		<field name="name" type="String">
+			<hint name="max-length">400</hint>
+		</field>
+		<field name="desc" type="String">
+			<hint name="max-length">400</hint>
+		</field>
 		<field name="useStatus" type="int" />
-		<field name="code" type="String" />
+		<field name="code" type="String">
+			<hint name="max-length">400</hint>
+		</field>
 		<field name="mngId" type="long" />
 		<field name="mngName" type="long" />
-		<field name="codeAndName" type="String" />
+		<field name="codeAndName" type="String">
+			<hint name="max-length">400</hint>
+		</field>
 	</model>
 	<model name="com.j2eecn.mcat.model.MeCategory">
 		<field name="uuid" type="String" />

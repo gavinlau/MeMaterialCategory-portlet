@@ -38,8 +38,16 @@ public static final String EMPTY_RESULTS_MESSAGE = "no-supplier-were-found";
 	public MeAssetCatSearch(PortletRequest portletRequest,
 			String defaultCurParam, PortletURL iteratorURL) {
 		
+		super(
+				portletRequest, new MeAssetCatDisplayTerms(portletRequest),
+				new MeAssetCatSearchTerms(portletRequest), defaultCurParam, DEFAULT_DELTA,
+				iteratorURL, headerNames, EMPTY_RESULTS_MESSAGE);
+		
+		
 		MeAssetCatDisplayTerms displayTerms = (MeAssetCatDisplayTerms)getDisplayTerms();
 		MeAssetCatSearchTerms searchTerms = (MeAssetCatSearchTerms)getSearchTerms();
+		_log.error("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		
 		iteratorURL.setParameter(
 				MeAssetCatDisplayTerms.NAME, displayTerms.getName());
 		iteratorURL.setParameter(

@@ -68,6 +68,4 @@ String portletNamespace=PortalUtil.getPortletNamespace(portletId);
 
 
 Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale, timeZone);
-String basePath="/html/mecategory";
-pageContext.setAttribute("basePath", basePath);
 %>
