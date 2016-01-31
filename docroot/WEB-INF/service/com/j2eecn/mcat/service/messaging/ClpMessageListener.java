@@ -15,6 +15,8 @@
 package com.j2eecn.mcat.service.messaging;
 
 import com.j2eecn.mcat.service.ClpSerializer;
+import com.j2eecn.mcat.service.MeAssetCatCareLocalServiceUtil;
+import com.j2eecn.mcat.service.MeAssetCatCareServiceUtil;
 import com.j2eecn.mcat.service.MeAssetCatLocalServiceUtil;
 import com.j2eecn.mcat.service.MeAssetCatServiceUtil;
 import com.j2eecn.mcat.service.MeCategoryLocalServiceUtil;
@@ -41,6 +43,9 @@ public class ClpMessageListener extends BaseMessageListener {
 			MeAssetCatLocalServiceUtil.clearService();
 
 			MeAssetCatServiceUtil.clearService();
+			MeAssetCatCareLocalServiceUtil.clearService();
+
+			MeAssetCatCareServiceUtil.clearService();
 			MeCategoryLocalServiceUtil.clearService();
 
 			MeCategoryServiceUtil.clearService();

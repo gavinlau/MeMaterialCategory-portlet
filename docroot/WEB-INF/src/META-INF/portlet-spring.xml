@@ -5,6 +5,9 @@
 	<bean id="com.j2eecn.mcat.service.MeAssetCatService" class="com.j2eecn.mcat.service.impl.MeAssetCatServiceImpl" />
 	<bean id="com.j2eecn.mcat.service.persistence.MeAssetCatPersistence" class="com.j2eecn.mcat.service.persistence.MeAssetCatPersistenceImpl" parent="basePersistence" />
 	<bean id="com.j2eecn.mcat.service.persistence.MeAssetCatFinder" class="com.j2eecn.mcat.service.persistence.MeAssetCatFinderImpl" parent="basePersistence" />
+	<bean id="com.j2eecn.mcat.service.MeAssetCatCareLocalService" class="com.j2eecn.mcat.service.impl.MeAssetCatCareLocalServiceImpl" />
+	<bean id="com.j2eecn.mcat.service.MeAssetCatCareService" class="com.j2eecn.mcat.service.impl.MeAssetCatCareServiceImpl" />
+	<bean id="com.j2eecn.mcat.service.persistence.MeAssetCatCarePersistence" class="com.j2eecn.mcat.service.persistence.MeAssetCatCarePersistenceImpl" parent="basePersistence" />
 	<bean id="com.j2eecn.mcat.service.MeCategoryLocalService" class="com.j2eecn.mcat.service.impl.MeCategoryLocalServiceImpl" />
 	<bean id="com.j2eecn.mcat.service.MeCategoryService" class="com.j2eecn.mcat.service.impl.MeCategoryServiceImpl" />
 	<bean id="com.j2eecn.mcat.service.persistence.MeCategoryPersistence" class="com.j2eecn.mcat.service.persistence.MeCategoryPersistenceImpl" parent="basePersistence" />

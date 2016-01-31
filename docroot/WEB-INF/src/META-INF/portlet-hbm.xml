@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="com.j2eecn.mcat.model.MeAssetCat" />
+	<import class="com.j2eecn.mcat.model.MeAssetCatCare" />
 	<import class="com.j2eecn.mcat.model.MeCategory" />
 	<class name="com.j2eecn.mcat.model.impl.MeAssetCatImpl" table="MeAssetCat">
 		<cache usage="read-write" />
@@ -27,6 +28,20 @@
 		<property name="mngId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="mngName" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="codeAndName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.j2eecn.mcat.model.impl.MeAssetCatCareImpl" table="MeAssetCatCare">
+		<cache usage="read-write" />
+		<id name="assetCatCareId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="assetCatId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 	<class name="com.j2eecn.mcat.model.impl.MeCategoryImpl" table="MeCategory">
 		<cache usage="read-write" />

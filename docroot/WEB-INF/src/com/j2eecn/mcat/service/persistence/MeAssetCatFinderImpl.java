@@ -2,6 +2,7 @@ package com.j2eecn.mcat.service.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.SQLQuery;
@@ -20,8 +21,8 @@ import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portlet.rolesadmin.util.RolesAdminUtil;
 import com.liferay.util.dao.orm.CustomSQLUtil;
-
 import com.j2eecn.mcat.model.MeAssetCat;
+import com.j2eecn.mcat.model.impl.MeAssetCatImpl;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.util.dao.orm.CustomSQLUtil;
 
@@ -59,7 +60,7 @@ public class MeAssetCatFinderImpl extends BasePersistenceImpl<MeAssetCat> implem
 		
 		SQLQuery q = session.createSQLQuery(sql);
 		QueryPos qPos = QueryPos.getInstance(q);
-		
+		q.addEntity("MeAssetCat", MeAssetCatImpl.class);
 		qPos.add(names,2);
 		qPos.add(codes,2);
 		qPos.add(nameAndCodes,2);

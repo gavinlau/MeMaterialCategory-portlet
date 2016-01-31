@@ -20,6 +20,18 @@ create table MeAssetCat (
 	codeAndName VARCHAR(400) null
 );
 
+create table MeAssetCatCare (
+	uuid_ VARCHAR(75) null,
+	assetCatCareId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	assetCatId LONG
+);
+
 create table MeCategory (
 	uuid_ VARCHAR(75) null,
 	catId LONG not null primary key,

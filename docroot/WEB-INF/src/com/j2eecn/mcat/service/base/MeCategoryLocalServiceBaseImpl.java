@@ -16,6 +16,7 @@ package com.j2eecn.mcat.service.base;
 
 import com.j2eecn.mcat.model.MeCategory;
 import com.j2eecn.mcat.service.MeCategoryLocalService;
+import com.j2eecn.mcat.service.persistence.MeAssetCatCarePersistence;
 import com.j2eecn.mcat.service.persistence.MeAssetCatFinder;
 import com.j2eecn.mcat.service.persistence.MeAssetCatPersistence;
 import com.j2eecn.mcat.service.persistence.MeCategoryPersistence;
@@ -415,6 +416,63 @@ public abstract class MeCategoryLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the me asset cat care local service.
+	 *
+	 * @return the me asset cat care local service
+	 */
+	public com.j2eecn.mcat.service.MeAssetCatCareLocalService getMeAssetCatCareLocalService() {
+		return meAssetCatCareLocalService;
+	}
+
+	/**
+	 * Sets the me asset cat care local service.
+	 *
+	 * @param meAssetCatCareLocalService the me asset cat care local service
+	 */
+	public void setMeAssetCatCareLocalService(
+		com.j2eecn.mcat.service.MeAssetCatCareLocalService meAssetCatCareLocalService) {
+		this.meAssetCatCareLocalService = meAssetCatCareLocalService;
+	}
+
+	/**
+	 * Returns the me asset cat care remote service.
+	 *
+	 * @return the me asset cat care remote service
+	 */
+	public com.j2eecn.mcat.service.MeAssetCatCareService getMeAssetCatCareService() {
+		return meAssetCatCareService;
+	}
+
+	/**
+	 * Sets the me asset cat care remote service.
+	 *
+	 * @param meAssetCatCareService the me asset cat care remote service
+	 */
+	public void setMeAssetCatCareService(
+		com.j2eecn.mcat.service.MeAssetCatCareService meAssetCatCareService) {
+		this.meAssetCatCareService = meAssetCatCareService;
+	}
+
+	/**
+	 * Returns the me asset cat care persistence.
+	 *
+	 * @return the me asset cat care persistence
+	 */
+	public MeAssetCatCarePersistence getMeAssetCatCarePersistence() {
+		return meAssetCatCarePersistence;
+	}
+
+	/**
+	 * Sets the me asset cat care persistence.
+	 *
+	 * @param meAssetCatCarePersistence the me asset cat care persistence
+	 */
+	public void setMeAssetCatCarePersistence(
+		MeAssetCatCarePersistence meAssetCatCarePersistence) {
+		this.meAssetCatCarePersistence = meAssetCatCarePersistence;
+	}
+
+	/**
 	 * Returns the me category local service.
 	 *
 	 * @return the me category local service
@@ -655,6 +713,12 @@ public abstract class MeCategoryLocalServiceBaseImpl
 	protected MeAssetCatPersistence meAssetCatPersistence;
 	@BeanReference(type = MeAssetCatFinder.class)
 	protected MeAssetCatFinder meAssetCatFinder;
+	@BeanReference(type = com.j2eecn.mcat.service.MeAssetCatCareLocalService.class)
+	protected com.j2eecn.mcat.service.MeAssetCatCareLocalService meAssetCatCareLocalService;
+	@BeanReference(type = com.j2eecn.mcat.service.MeAssetCatCareService.class)
+	protected com.j2eecn.mcat.service.MeAssetCatCareService meAssetCatCareService;
+	@BeanReference(type = MeAssetCatCarePersistence.class)
+	protected MeAssetCatCarePersistence meAssetCatCarePersistence;
 	@BeanReference(type = com.j2eecn.mcat.service.MeCategoryLocalService.class)
 	protected com.j2eecn.mcat.service.MeCategoryLocalService meCategoryLocalService;
 	@BeanReference(type = com.j2eecn.mcat.service.MeCategoryService.class)

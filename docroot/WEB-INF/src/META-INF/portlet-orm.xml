@@ -47,6 +47,29 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="com.j2eecn.mcat.model.impl.MeAssetCatCareModelImpl">
+		<attributes>
+			<id name="assetCatCareId" />
+			<basic name="uuid">
+				<column name="UUID_" />
+			</basic>
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="assetCatId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
 	<mapped-superclass class="com.j2eecn.mcat.model.impl.MeCategoryModelImpl">
 		<attributes>
 			<id name="catId" />
@@ -92,6 +115,10 @@
 	</mapped-superclass>
 	<entity class="com.j2eecn.mcat.model.impl.MeAssetCatImpl" name="MeAssetCat">
 		<table name="MeAssetCat" />
+		<attributes />
+	</entity>
+	<entity class="com.j2eecn.mcat.model.impl.MeAssetCatCareImpl" name="MeAssetCatCare">
+		<table name="MeAssetCatCare" />
 		<attributes />
 	</entity>
 	<entity class="com.j2eecn.mcat.model.impl.MeCategoryImpl" name="MeCategory">

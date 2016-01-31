@@ -1,3 +1,4 @@
+<%@page import="com.j2eecn.mcat.service.MeAssetCatCareLocalServiceUtil"%>
 <%@page import="com.j2eecn.mcat.service.MeAssetCatLocalServiceUtil"%>
 <%@page import="com.j2eecn.mcat.service.persistence.MeAssetCatUtil"%>
 <%@page import="com.j2eecn.mcat.model.MeAssetCat"%>
@@ -31,7 +32,7 @@ searchContainer.setRowChecker(new RowChecker(renderResponse));
 	<liferay-ui:search-container-results>
 	  <%
 	   MeAssetCatDisplayTerms displayTerms = (MeAssetCatDisplayTerms)searchContainer.getDisplayTerms();
-		MeAssetCatSearchTerms searchTerms = (MeAssetCatSearchTerms)searchContainer.getSearchTerms();
+	   MeAssetCatSearchTerms searchTerms = (MeAssetCatSearchTerms)searchContainer.getSearchTerms();
 	  if (searchTerms.isAdvancedSearch()) {
 		  results=MeAssetCatLocalServiceUtil.findByN_C_NC(searchTerms.getName(), searchTerms.getCode(), searchTerms.getCodeAndName(), searchTerms.isAndOperator(), searchContainer.getStart(), searchContainer.getEnd(), null);
 		  total=MeAssetCatLocalServiceUtil.countByN_C_NC(searchTerms.getName(), searchTerms.getCode(), searchTerms.getCodeAndName(), searchTerms.isAndOperator());
@@ -62,16 +63,37 @@ searchContainer.setRowChecker(new RowChecker(renderResponse));
 	      <liferay-ui:search-container-column-text name="assetCat-operation">
 	      <%
 	           boolean isCare=false;
+	           isCare=MeAssetCatCareLocalServiceUtil.isCare(user.getUserId(), assetCat.getAssetCatId());
 	      %>
-	        <c:if test="<%=isCare %>">
-	          <liferay-ui:icon image="view" url="${careURL}"/>
-	         </c:if>
-	         <c:if test="<%=!isCare %>">
-	          <liferay-ui:icon image="view" url="${notCareURL}"/>
-	        </c:if>
+	        <input class="task-action-button" onClick="<portlet:namespace />updateCare(<%= isCare ? true : false %>)" type="button" value="<liferay-ui:message key='<%= isCare ? "取消" : "关注" %>' />" />
 	      </liferay-ui:search-container-column-text>
 	 </liferay-ui:search-container-row>
 	 <liferay-ui:search-iterator/>
    </liferay-ui:search-container>
 </aui:form>
+<aui:script use="aui-io">
+   Liferay.provide(
+						window,
+						'<portlet:namespace />updateCare',
+						function(status) {
+							A.io.request(
+								'<portlet:actionURL name="updateCare" />',
+								{
+									after: {
+										success: function() {
+											Liferay.Tasks.updateTaskList();
+
+											Liferay.Tasks.displayPopup('<portlet:renderURL windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/tasks/view_task.jsp" /><portlet:param name="tasksEntryId" value="<%= String.valueOf(tasksEntry.getTasksEntryId()) %>" /></portlet:renderURL>', '<liferay-ui:message key="update-task" />');
+										}
+									},
+									data: {
+										tasksEntryId: <%= tasksEntry.getTasksEntryId() %>,
+										resolverUserId: <%= user.getUserId() %>,
+										status: status
+									}
+								}
+							);
+						}
+					);
+</aui:script>
 

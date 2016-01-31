@@ -52,6 +52,7 @@ public class MeAssetCatLocalServiceImpl extends MeAssetCatLocalServiceBaseImpl {
 	//Simple
 	public List<MeAssetCat> findByKeywords(String keywords,boolean andOperator,int start,int end,OrderByComparator obc)
 	{
+		System.out.println("meAssetCatFinder.findByKeywords(keywords, andOperator, start, end, obc):"+meAssetCatFinder.findByKeywords(keywords, andOperator, start, end, obc));
 		return meAssetCatFinder.findByKeywords(keywords, andOperator, start, end, obc);
 	}
 	

@@ -40,7 +40,9 @@
 		<column name="mngName" type="long" />
 		<column name="codeAndName" type="String" />
 	</entity>
-	<entity name="MeAssetCatCare">
+	
+	
+	<entity name="MeAssetCatCare" uuid="true" local-service="true" remote-service="true">
 	   <!-- PK fields -->
 
 		<column name="assetCatCareId" type="long" primary="true" />
@@ -57,8 +59,18 @@
 		<column name="createDate" type="Date" />
 		<column name="modifiedDate" type="Date" />
 		
-		<!-- Other fields -->
+		<!-- ref fields -->
 		<column name="assetCatId" type="long"/>
+		
+		<!-- Finder methods -->
+		<finder name="U_ACID" return-type="Collection">
+		   <finder-column name="userId"/>
+		   <finder-column name="assetCatId"/>
+		</finder>
+		<finder  name="UserId" return-type="Collection">
+		   <finder-column name="userId"/>
+		</finder>
+		
 	</entity>
 
 	<entity name="MeCategory" uuid="true" local-service="true" remote-service="true">

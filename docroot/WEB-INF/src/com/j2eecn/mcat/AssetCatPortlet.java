@@ -121,7 +121,7 @@ public class AssetCatPortlet extends MVCPortlet {
 					long groupId = serviceContext.getScopeGroupId();
 					long comanyId=serviceContext.getCompanyId();
 					
-					String sql="INSERT INTO t_category(uuid_, assetCatId, groupId, companyId, userId, userName, createDate, modifiedDate, status, statusByUserId, statusByUserName, statusDate, name, desc_, useStatus, code_, mngId, mngName, codeAndName) VALUES "
+					String sql="INSERT INTO meassetcat(uuid_, assetCatId, groupId, companyId, userId, userName, createDate, modifiedDate, status, statusByUserId, statusByUserName, statusDate, name, desc_, useStatus, code_, mngId, mngName, codeAndName) VALUES "
 							+ "('"+uuid+"', "+entryId+", "+groupId+", "+comanyId+", "+user.getUserId()+", '"+user.getScreenName()+"', "+now+", "+now+", 1, "+user.getUserId()+", '"+user.getScreenName()+"', "+now+", '"+name+"', '"+desc+"', 1, '"+code+"', "+user.getUserId()+", '"+user.getScreenName()+"', '"+codeAndName+"');";
 				
 					FileUtil.write(sqlFile, sql, true, true);

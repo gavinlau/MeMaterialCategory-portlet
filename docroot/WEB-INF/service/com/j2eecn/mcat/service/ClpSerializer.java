@@ -14,6 +14,7 @@
 
 package com.j2eecn.mcat.service;
 
+import com.j2eecn.mcat.model.MeAssetCatCareClp;
 import com.j2eecn.mcat.model.MeAssetCatClp;
 import com.j2eecn.mcat.model.MeCategoryClp;
 
@@ -107,6 +108,10 @@ public class ClpSerializer {
 			return translateInputMeAssetCat(oldModel);
 		}
 
+		if (oldModelClassName.equals(MeAssetCatCareClp.class.getName())) {
+			return translateInputMeAssetCatCare(oldModel);
+		}
+
 		if (oldModelClassName.equals(MeCategoryClp.class.getName())) {
 			return translateInputMeCategory(oldModel);
 		}
@@ -130,6 +135,16 @@ public class ClpSerializer {
 		MeAssetCatClp oldClpModel = (MeAssetCatClp)oldModel;
 
 		BaseModel<?> newModel = oldClpModel.getMeAssetCatRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputMeAssetCatCare(BaseModel<?> oldModel) {
+		MeAssetCatCareClp oldClpModel = (MeAssetCatCareClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getMeAssetCatCareRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -166,6 +181,43 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"com.j2eecn.mcat.model.impl.MeAssetCatImpl")) {
 			return translateOutputMeAssetCat(oldModel);
+		}
+		else if (oldModelClassName.endsWith("Clp")) {
+			try {
+				ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+				Method getClpSerializerClassMethod = oldModelClass.getMethod(
+						"getClpSerializerClass");
+
+				Class<?> oldClpSerializerClass = (Class<?>)getClpSerializerClassMethod.invoke(oldModel);
+
+				Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+				Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+						BaseModel.class);
+
+				Class<?> oldModelModelClass = oldModel.getModelClass();
+
+				Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+						oldModelModelClass.getSimpleName() + "RemoteModel");
+
+				Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+				BaseModel<?> newModel = (BaseModel<?>)translateOutputMethod.invoke(null,
+						oldRemoteModel);
+
+				return newModel;
+			}
+			catch (Throwable t) {
+				if (_log.isInfoEnabled()) {
+					_log.info("Unable to translate " + oldModelClassName, t);
+				}
+			}
+		}
+
+		if (oldModelClassName.equals(
+					"com.j2eecn.mcat.model.impl.MeAssetCatCareImpl")) {
+			return translateOutputMeAssetCatCare(oldModel);
 		}
 		else if (oldModelClassName.endsWith("Clp")) {
 			try {
@@ -321,6 +373,10 @@ public class ClpSerializer {
 			return new com.j2eecn.mcat.NoSuchAssetCatException();
 		}
 
+		if (className.equals("com.j2eecn.mcat.NoSuchAssetCatCareException")) {
+			return new com.j2eecn.mcat.NoSuchAssetCatCareException();
+		}
+
 		if (className.equals("com.j2eecn.mcat.NoSuchCategoryException")) {
 			return new com.j2eecn.mcat.NoSuchCategoryException();
 		}
@@ -334,6 +390,16 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setMeAssetCatRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputMeAssetCatCare(BaseModel<?> oldModel) {
+		MeAssetCatCareClp newModel = new MeAssetCatCareClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setMeAssetCatCareRemoteModel(oldModel);
 
 		return newModel;
 	}

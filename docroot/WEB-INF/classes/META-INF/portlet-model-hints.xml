@@ -30,6 +30,17 @@
 			<hint name="max-length">400</hint>
 		</field>
 	</model>
+	<model name="com.j2eecn.mcat.model.MeAssetCatCare">
+		<field name="uuid" type="String" />
+		<field name="assetCatCareId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="assetCatId" type="long" />
+	</model>
 	<model name="com.j2eecn.mcat.model.MeCategory">
 		<field name="uuid" type="String" />
 		<field name="catId" type="long" />
