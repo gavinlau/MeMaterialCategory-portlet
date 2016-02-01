@@ -135,9 +135,20 @@ public class MeAssetCatCareLocalServiceClp implements MeAssetCatCareLocalService
 
 		_methodParameterTypes23 = new String[] { "long" };
 
-		_methodName24 = "isCare";
+		_methodName24 = "findByU_ACID";
 
 		_methodParameterTypes24 = new String[] { "long", "long" };
+
+		_methodName25 = "isCare";
+
+		_methodParameterTypes25 = new String[] { "long", "long" };
+
+		_methodName26 = "addEntry";
+
+		_methodParameterTypes26 = new String[] {
+				"com.j2eecn.mcat.model.MeAssetCatCare",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -849,7 +860,8 @@ public class MeAssetCatCareLocalServiceClp implements MeAssetCatCareLocalService
 	}
 
 	@Override
-	public boolean isCare(long userId, long assetCatId)
+	public com.j2eecn.mcat.model.MeAssetCatCare findByU_ACID(long userId,
+		long assetCatId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
@@ -873,7 +885,75 @@ public class MeAssetCatCareLocalServiceClp implements MeAssetCatCareLocalService
 			}
 		}
 
+		return (com.j2eecn.mcat.model.MeAssetCatCare)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public boolean isCare(long userId, long assetCatId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25, new Object[] { userId, assetCatId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
 		return ((Boolean)returnObj).booleanValue();
+	}
+
+	@Override
+	public com.j2eecn.mcat.model.MeAssetCatCare addEntry(
+		com.j2eecn.mcat.model.MeAssetCatCare entry,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName26,
+					_methodParameterTypes26,
+					new Object[] {
+						ClpSerializer.translateInput(entry),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.j2eecn.mcat.model.MeAssetCatCare)ClpSerializer.translateOutput(returnObj);
 	}
 
 	private InvokableLocalService _invokableLocalService;
@@ -925,4 +1005,8 @@ public class MeAssetCatCareLocalServiceClp implements MeAssetCatCareLocalService
 	private String[] _methodParameterTypes23;
 	private String _methodName24;
 	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
 }

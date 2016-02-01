@@ -363,9 +363,25 @@ public class MeAssetCatCareLocalServiceWrapper
 	}
 
 	@Override
+	public com.j2eecn.mcat.model.MeAssetCatCare findByU_ACID(long userId,
+		long assetCatId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _meAssetCatCareLocalService.findByU_ACID(userId, assetCatId);
+	}
+
+	@Override
 	public boolean isCare(long userId, long assetCatId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _meAssetCatCareLocalService.isCare(userId, assetCatId);
+	}
+
+	@Override
+	public com.j2eecn.mcat.model.MeAssetCatCare addEntry(
+		com.j2eecn.mcat.model.MeAssetCatCare entry,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _meAssetCatCareLocalService.addEntry(entry, serviceContext);
 	}
 
 	/**

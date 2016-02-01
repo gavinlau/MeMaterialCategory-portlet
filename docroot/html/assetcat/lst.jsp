@@ -75,21 +75,18 @@ searchContainer.setRowChecker(new RowChecker(renderResponse));
    Liferay.provide(
 						window,
 						'<portlet:namespace />updateCare',
-						function(status) {
+						function(btn,isCare,assetCatId) {
 							A.io.request(
 								'<portlet:actionURL name="updateCare" />',
 								{
 									after: {
 										success: function() {
-											Liferay.Tasks.updateTaskList();
-
-											Liferay.Tasks.displayPopup('<portlet:renderURL windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/tasks/view_task.jsp" /><portlet:param name="tasksEntryId" value="<%= String.valueOf(tasksEntry.getTasksEntryId()) %>" /></portlet:renderURL>', '<liferay-ui:message key="update-task" />');
+											alert('Success');
 										}
 									},
 									data: {
-										tasksEntryId: <%= tasksEntry.getTasksEntryId() %>,
-										resolverUserId: <%= user.getUserId() %>,
-										status: status
+										<portlet:namespace />assetCatId:assetCatId,
+										<portlet:namespace />isCare:isCare
 									}
 								}
 							);

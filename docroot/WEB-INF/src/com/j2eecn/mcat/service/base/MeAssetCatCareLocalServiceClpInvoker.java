@@ -134,9 +134,20 @@ public class MeAssetCatCareLocalServiceClpInvoker {
 
 		_methodParameterTypes58 = new String[] { "long" };
 
-		_methodName59 = "isCare";
+		_methodName59 = "findByU_ACID";
 
 		_methodParameterTypes59 = new String[] { "long", "long" };
+
+		_methodName60 = "isCare";
+
+		_methodParameterTypes60 = new String[] { "long", "long" };
+
+		_methodName61 = "addEntry";
+
+		_methodParameterTypes61 = new String[] {
+				"com.j2eecn.mcat.model.MeAssetCatCare",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -271,8 +282,20 @@ public class MeAssetCatCareLocalServiceClpInvoker {
 
 		if (_methodName59.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes59, parameterTypes)) {
+			return MeAssetCatCareLocalServiceUtil.findByU_ACID(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName60.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes60, parameterTypes)) {
 			return MeAssetCatCareLocalServiceUtil.isCare(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName61.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes61, parameterTypes)) {
+			return MeAssetCatCareLocalServiceUtil.addEntry((com.j2eecn.mcat.model.MeAssetCatCare)arguments[0],
+				(com.liferay.portal.service.ServiceContext)arguments[1]);
 		}
 
 		throw new UnsupportedOperationException();
@@ -326,4 +349,8 @@ public class MeAssetCatCareLocalServiceClpInvoker {
 	private String[] _methodParameterTypes58;
 	private String _methodName59;
 	private String[] _methodParameterTypes59;
+	private String _methodName60;
+	private String[] _methodParameterTypes60;
+	private String _methodName61;
+	private String[] _methodParameterTypes61;
 }

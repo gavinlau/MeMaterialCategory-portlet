@@ -313,7 +313,17 @@ public interface MeAssetCatCareLocalService extends BaseLocalService,
 	public java.util.List<com.j2eecn.mcat.model.MeAssetCatCare> findByUserId(
 		long userId) throws com.liferay.portal.kernel.exception.SystemException;
 
+	public com.j2eecn.mcat.model.MeAssetCatCare findByU_ACID(long userId,
+		long assetCatId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public boolean isCare(long userId, long assetCatId)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public com.j2eecn.mcat.model.MeAssetCatCare addEntry(
+		com.j2eecn.mcat.model.MeAssetCatCare entry,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }

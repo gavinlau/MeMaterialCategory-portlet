@@ -15,11 +15,17 @@
 package com.j2eecn.mcat.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.j2eecn.mcat.model.MeAssetCatCare;
 import com.j2eecn.mcat.service.base.MeAssetCatCareLocalServiceBaseImpl;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.model.User;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.UserLocalServiceUtil;
 
 /**
  * The implementation of the me asset cat care local service.
@@ -47,11 +53,50 @@ public class MeAssetCatCareLocalServiceImpl
 		target=meAssetCatCarePersistence.findByUserId(userId);
 		return target;
 	}
+	public MeAssetCatCare findByU_ACID(long userId,long assetCatId) throws SystemException {
+		MeAssetCatCare target=null;
+		List<MeAssetCatCare> tmp=null;
+		tmp=meAssetCatCarePersistence.findByU_ACID(userId, assetCatId);
+		target=(tmp!=null && tmp.size()>0)?tmp.get(0):null;
+		return target;
+	}
 	public boolean isCare(long userId,long assetCatId) throws SystemException {
 		boolean target=false;
 		List<MeAssetCatCare> tmp=null;
 		tmp=meAssetCatCarePersistence.findByU_ACID(userId, assetCatId);
 		target=(tmp!=null && tmp.size()>0)?true:false;
+		return target;
+	}
+	
+	public MeAssetCatCare addEntry(MeAssetCatCare entry,ServiceContext serviceContext)throws PortalException, SystemException
+	{
+		MeAssetCatCare target=null;
+		if(Validator.isNotNull(entry))
+	    {
+			long entryId=counterLocalService.increment(MeAssetCatCare.class.toString());
+	    	User user = UserLocalServiceUtil.getUserById(serviceContext.getUserId());
+			long groupId = serviceContext.getScopeGroupId();
+			Date now=new Date();
+			long comanyId=serviceContext.getCompanyId();
+			
+			
+			//pk
+			entry.setAssetCatCareId(entryId);
+			entry.setUuid(serviceContext.getUuid());
+			
+			//audit five
+			entry.setCompanyId(comanyId);
+			entry.setGroupId(groupId);
+			entry.setUserName(user.getScreenName());
+			entry.setUserId(user.getUserId());
+			entry.setCreateDate(now);
+			entry.setModifiedDate(now);
+			
+			//Save to db
+			this.addMeAssetCatCare(entry);
+			
+			target=entry;
+	    }
 		return target;
 	}
 }

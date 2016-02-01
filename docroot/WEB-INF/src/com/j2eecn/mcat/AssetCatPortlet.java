@@ -8,12 +8,19 @@ import java.util.Date;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
+import javax.servlet.http.HttpServletResponse;
 
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 import com.j2eecn.mcat.model.MeAssetCat;
+import com.j2eecn.mcat.model.MeAssetCatCare;
+import com.j2eecn.mcat.model.impl.MeAssetCatCareImpl;
+import com.j2eecn.mcat.service.MeAssetCatCareLocalServiceUtil;
+import com.j2eecn.mcat.service.persistence.MeAssetCatCareUtil;
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.counter.service.persistence.CounterUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -26,6 +33,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletResponseUtil;
 import com.liferay.portal.kernel.repository.model.FileEntry;
+import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.upload.UploadPortletRequest;
 import com.liferay.portal.kernel.util.CharPool;
@@ -132,6 +140,51 @@ public class AssetCatPortlet extends MVCPortlet {
 		}
 		
 		
+	}
+
+	public void updateCare(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws Exception {
+		User user = PortalUtil.getUser(actionRequest);
+		ServiceContext serviceContext=ServiceContextFactory.getInstance(actionRequest);
+		
+		
+		long assetCatId = ParamUtil.getLong(actionRequest, "assetCatId");
+		boolean isCare = ParamUtil.getBoolean(actionRequest, "isCare");
+		
+		//check the if has checked
+		boolean dbIsCare=MeAssetCatCareLocalServiceUtil.isCare(user.getUserId(), assetCatId);
+		if(isCare)//添加关注
+		{
+			if(!dbIsCare)
+			{
+				//add an entry
+				MeAssetCatCare entry=new MeAssetCatCareImpl();
+				entry.setAssetCatId(assetCatId);
+				MeAssetCatCareLocalServiceUtil.addEntry(entry, serviceContext);
+				
+			}
+			else
+			{
+				//do nothing
+			}
+		}else//取消关注
+		{
+			if(!dbIsCare)
+			{
+				//do nothing
+			}
+			else
+			{
+				MeAssetCatCare entry=MeAssetCatCareLocalServiceUtil.findByU_ACID(user.getUserId(), assetCatId);
+				MeAssetCatCareLocalServiceUtil.deleteMeAssetCatCare(entry.getAssetCatCareId());
+			}
+		}
+		
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+		jsonObject.put("success", Boolean.TRUE);
+		HttpServletResponse response = PortalUtil
+				.getHttpServletResponse(actionResponse);
+		ServletResponseUtil.write(response, jsonObject.toString());
 	}
 	private static Log _log = LogFactoryUtil.getLog(AssetCatPortlet.class);
 }

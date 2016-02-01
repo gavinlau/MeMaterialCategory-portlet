@@ -341,9 +341,23 @@ public class MeAssetCatCareLocalServiceUtil {
 		return getService().findByUserId(userId);
 	}
 
+	public static com.j2eecn.mcat.model.MeAssetCatCare findByU_ACID(
+		long userId, long assetCatId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByU_ACID(userId, assetCatId);
+	}
+
 	public static boolean isCare(long userId, long assetCatId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().isCare(userId, assetCatId);
+	}
+
+	public static com.j2eecn.mcat.model.MeAssetCatCare addEntry(
+		com.j2eecn.mcat.model.MeAssetCatCare entry,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().addEntry(entry, serviceContext);
 	}
 
 	public static void clearService() {
