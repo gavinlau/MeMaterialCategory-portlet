@@ -65,7 +65,7 @@ searchContainer.setRowChecker(new RowChecker(renderResponse));
 	           boolean isCare=false;
 	           isCare=MeAssetCatCareLocalServiceUtil.isCare(user.getUserId(), assetCat.getAssetCatId());
 	      %>
-	        <input class="task-action-button" onClick="<portlet:namespace />updateCare(<%= isCare ? true : false %>)" type="button" value="<liferay-ui:message key='<%= isCare ? "取消" : "关注" %>' />" />
+	        <input class="task-action-button" onClick="<portlet:namespace />updateCare(<%= isCare ? true : false %>)" type="button" value="<liferay-ui:message key='<%= isCare ? "取消关注" : "关注" %>' />" />
 	      </liferay-ui:search-container-column-text>
 	 </liferay-ui:search-container-row>
 	 <liferay-ui:search-iterator/>
@@ -81,7 +81,19 @@ searchContainer.setRowChecker(new RowChecker(renderResponse));
 								{
 									after: {
 										success: function() {
-											alert('Success');
+										    //var data = this.get('responseData');
+											//alert(data);
+											var orgValue=btn.value;
+											
+											if(orgValue=='关注')
+											{
+											   btn.value='取消关注';
+											}
+											else
+											{
+											  btn.value='关注';
+											}
+											//A.one('#phonenumberinforesultdiv2')
 										}
 									},
 									data: {
